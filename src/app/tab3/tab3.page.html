@@ -19,20 +19,20 @@
         <app-ionic-component-card [componentName]="component.name">
           <ng-container [ngSwitch]="component.type">
             <ion-skeleton-text *ngSwitchCase="'skeleton-text'" animated style="width: 100%"></ion-skeleton-text>
-            <ion-reorder *ngSwitchCase="'reorder'">
-              <ion-icon name="reorder"></ion-icon>
-            </ion-reorder>
-            <ion-menu-button *ngSwitchCase="'menu-button'">
-              <ion-icon name="menu"></ion-icon>
-            </ion-menu-button>
+            <ion-datetime *ngSwitchCase="'datetime'" presentation="date"></ion-datetime>
+            <ion-fab *ngSwitchCase="'fab'" vertical="center" horizontal="center">
+              <ion-fab-button>
+                <ion-icon name="add"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+            <ion-select *ngSwitchCase="'select'" placeholder="Select">
+              <ion-select-option value="option1">Option 1</ion-select-option>
+              <ion-select-option value="option2">Option 2</ion-select-option>
+            </ion-select>
             <ion-breadcrumbs *ngSwitchCase="'breadcrumbs'">
               <ion-breadcrumb href="#home">Home</ion-breadcrumb>
             </ion-breadcrumbs>
-            <ion-list *ngSwitchCase="'list'">
-              <ion-item>
-                <ion-label>Item</ion-label>
-              </ion-item>
-            </ion-list>
+            <ion-textarea *ngSwitchCase="'textarea'" placeholder="Enter text here" rows="3"></ion-textarea>
             <ion-accordion-group *ngSwitchCase="'accordion'">
               <ion-accordion value="first">
                 <ion-item slot="header">
@@ -47,9 +47,6 @@
                 </ion-tab-button>
               </ion-tab-bar>
             </ion-tabs>
-            <ion-toolbar *ngSwitchCase="'toolbar'">
-              <ion-title>{{ component.name }}</ion-title>
-            </ion-toolbar>
             <ion-header *ngSwitchCase="'header'">
               <ion-toolbar>
                 <ion-title>{{ component.name }}</ion-title>

@@ -9,13 +9,13 @@ import { Component } from '@angular/core';
 export class Tab3Page {
   components = [
     { name: 'Skeleton Text', type: 'skeleton-text' },
-    { name: 'Reorder', type: 'reorder' },
-    { name: 'Menu Button', type: 'menu-button' },
+    { name: 'Datetime', type: 'datetime' },
+    { name: 'FAB', type: 'fab' },
+    { name: 'Select', type: 'select' },
     { name: 'Breadcrumbs', type: 'breadcrumbs' },
-    { name: 'List', type: 'list' },
+    { name: 'Textarea', type: 'textarea' },
     { name: 'Accordion', type: 'accordion' },
     { name: 'Tabs', type: 'tabs' },
-    { name: 'Toolbar', type: 'toolbar' },
     { name: 'Header', type: 'header' },
     { name: 'Footer', type: 'footer' }
   ];
