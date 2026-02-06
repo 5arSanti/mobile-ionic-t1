@@ -13,5 +13,56 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let component of components">
+        <app-ionic-component-card [componentName]="component.name">
+          <ng-container [ngSwitch]="component.type">
+            <ion-skeleton-text *ngSwitchCase="'skeleton-text'" animated style="width: 100%"></ion-skeleton-text>
+            <ion-reorder *ngSwitchCase="'reorder'">
+              <ion-icon name="reorder"></ion-icon>
+            </ion-reorder>
+            <ion-menu-button *ngSwitchCase="'menu-button'">
+              <ion-icon name="menu"></ion-icon>
+            </ion-menu-button>
+            <ion-breadcrumbs *ngSwitchCase="'breadcrumbs'">
+              <ion-breadcrumb href="#home">Home</ion-breadcrumb>
+            </ion-breadcrumbs>
+            <ion-list *ngSwitchCase="'list'">
+              <ion-item>
+                <ion-label>Item</ion-label>
+              </ion-item>
+            </ion-list>
+            <ion-accordion-group *ngSwitchCase="'accordion'">
+              <ion-accordion value="first">
+                <ion-item slot="header">
+                  <ion-label>{{ component.name }}</ion-label>
+                </ion-item>
+              </ion-accordion>
+            </ion-accordion-group>
+            <ion-tabs *ngSwitchCase="'tabs'">
+              <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="tab1">
+                  <ion-label>Tab</ion-label>
+                </ion-tab-button>
+              </ion-tab-bar>
+            </ion-tabs>
+            <ion-toolbar *ngSwitchCase="'toolbar'">
+              <ion-title>{{ component.name }}</ion-title>
+            </ion-toolbar>
+            <ion-header *ngSwitchCase="'header'">
+              <ion-toolbar>
+                <ion-title>{{ component.name }}</ion-title>
+              </ion-toolbar>
+            </ion-header>
+            <ion-footer *ngSwitchCase="'footer'">
+              <ion-toolbar>
+                <ion-title>{{ component.name }}</ion-title>
+              </ion-toolbar>
+            </ion-footer>
+          </ng-container>
+        </app-ionic-component-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
