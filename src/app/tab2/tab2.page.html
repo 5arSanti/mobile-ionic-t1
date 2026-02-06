@@ -11,39 +11,38 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-
-  <ion-datetime></ion-datetime>
-
-  <ion-fab slot="fixed" horizontal="start" vertical="center">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button>
-        <ion-icon name="chevron-up"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="end">
-      <ion-fab-button>
-        <ion-icon name="chevron-forward"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="chevron-forward"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="bottom">
-      <ion-fab-button>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="start">
-      <ion-fab-button>
-        <ion-icon name="chevron-back"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button>
-        <ion-icon name="chevron-back"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let component of components">
+        <app-ionic-component-card [componentName]="component.name">
+          <ng-container [ngSwitch]="component.type">
+            <ion-segment *ngSwitchCase="'segment'" value="default">
+              <ion-segment-button value="default">
+                <ion-label>Default</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+            <ion-searchbar *ngSwitchCase="'searchbar'" placeholder="Search"></ion-searchbar>
+            <ion-item *ngSwitchCase="'item'">
+              <ion-label>{{ component.name }}</ion-label>
+            </ion-item>
+            <ion-card *ngSwitchCase="'card'">
+              <ion-card-header>
+                <ion-card-title>{{ component.name }}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+            <ion-avatar *ngSwitchCase="'avatar'">
+              <img src="https://tse1.explicit.bing.net/th/id/OIP.GBWUQUx938jBExN0d59O6gHaHn?rs=1&pid=ImgDetMain&o=7&rm=3" alt="avatar">
+            </ion-avatar>
+            <ion-thumbnail *ngSwitchCase="'thumbnail'">
+              <img src="https://5arsanti.github.io/Logo-Profesional-Santiago-V3.png" alt="thumbnail">
+            </ion-thumbnail>
+            <ion-label *ngSwitchCase="'label'">{{ component.name }}</ion-label>
+            <ion-text *ngSwitchCase="'text'" color="primary">{{ component.name }}</ion-text>
+            <ion-note *ngSwitchCase="'note'">{{ component.name }}</ion-note>
+            <ion-back-button *ngSwitchCase="'back-button'" defaultHref="/"></ion-back-button>
+          </ng-container>
+        </app-ionic-component-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
