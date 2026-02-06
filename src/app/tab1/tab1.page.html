@@ -13,5 +13,24 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let component of components">
+        <app-ionic-component-card [componentName]="component.name">
+          <ng-container [ngSwitch]="component.type">
+            <ion-button *ngSwitchCase="'button'" color="primary">{{ component.name }}</ion-button>
+            <ion-badge *ngSwitchCase="'badge'" color="primary">5</ion-badge>
+            <ion-chip *ngSwitchCase="'chip'" color="primary">{{ component.name }}</ion-chip>
+            <ion-checkbox *ngSwitchCase="'checkbox'" checked="true"></ion-checkbox>
+            <ion-toggle *ngSwitchCase="'toggle'" checked="true"></ion-toggle>
+            <ion-radio *ngSwitchCase="'radio'" checked="true"></ion-radio>
+            <ion-range *ngSwitchCase="'range'" value="50"></ion-range>
+            <ion-progress-bar *ngSwitchCase="'progress-bar'" value="0.5"></ion-progress-bar>
+            <ion-spinner *ngSwitchCase="'spinner'" name="crescent"></ion-spinner>
+            <ion-icon *ngSwitchCase="'icon'" name="heart" color="danger"></ion-icon>
+          </ng-container>
+        </app-ionic-component-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
